@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<link rel="shortcut icon" href="../../../123.ico" />
+		  <link rel="bookmark"href="../../../123.ico" />
+		  <meta charset="utf-8">
+		  <title>delphinidae9的网站</title>
+		  <meta name="keywords" content="delphinidae9的工作室">
+		  <meta name="description" content="delphinidae9工作室">
+		  <meta name="renderer" content="webkit">
+		  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+		  <meta name="apple-mobile-web-app-capable" content="yes">
+		  <meta name="format-detection" content="telephone=no">
+		  <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate"> 
+		  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT"> 
+		  <meta HTTP-EQUIV="expires" CONTENT="0">
+		 <link rel='stylesheet' type='text/css' href='styles.css'>
+	</head>
+	<body>
+		<h1>我的日记</h1>
+		<p>你好</p>
+		<p>长话短说<br><br><br><br></p>
+		<pre>
+		布鲁斯的音阶排列分为两种，分别为大调布鲁斯音阶和小调布鲁斯音阶。
+先来看大调的布鲁斯音阶：
+C大调Blues：C D bE E G A C
+D大调Blues：D E F bG A B D
+E大调Blues：E #F G bA B #C E
+F大调Blues：F G bA A C D F
+G大调Blues：G A bB B D E G
+A大调Blues： A B C #C E bG A
+B大调Blues：B #C D bE bG bA B
+再看小调中的布鲁斯音阶：
+A小调Blues： A C D bE E G A B小调Blues： B D E F bG A B
+C小调Blues：C bE F bG G bB C (这是非常典型的Blues音阶，bE，bG，bB三蓝调元素集聚)
+D小调Blues： D F G bA A C D
+E小调Blues： E G A bB B D E
+F小调Blues：F bA bB B C bE F
+G小调Blues：G bB C bD D F G
+
+		</pre>
+		
+		<a href='../../..' target='_blank'>首页（点击查看）</a>
+		<address>
+			<strong>联系站长</strong><br>
+			邮箱：dolphin@delphinidae9.club<br>
+			
+		</address>
+	</body>
+</html>
