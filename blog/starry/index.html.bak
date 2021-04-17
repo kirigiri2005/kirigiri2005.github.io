@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<link rel="shortcut icon" href="../../123.ico" />
+		  <link rel="bookmark"href="../../123.ico" />
+		  <meta charset="utf-8">
+		  <title>delphinidae9的网站--starry的blogs</title>
+		  <meta name="keywords" content="delphinidae9的工作室">
+		  <meta name="description" content="delphinidae9工作室">
+		  <meta name="renderer" content="webkit">
+		  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+		  <meta name="apple-mobile-web-app-capable" content="yes">
+		  <meta name="format-detection" content="telephone=no">
+		  <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate"> 
+		  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT"> 
+		  <meta HTTP-EQUIV="expires" CONTENT="0">
+		 <link rel='stylesheet' type='text/css' href='styles.css'>
+	</head>
+	<body>
+		<h1>starry的blogs</h1>
+		<p>你好</p>
+		<p></p>
+		<br><ul>
+			<li><a href='20210218.html' target='_blank'><b>人生路上，步履不停</b>（点击查看）</li>
+			
+		</ul>
+		
+		<a href='../..' target='_blank'>回网站首页（点击查看）</a>
+		<address>
+			<strong>联系站长</strong><br>
+			邮箱：dolphin@delphinidae9.club<br>
+			
+			
+		</address>
+	</body>
+</html>
