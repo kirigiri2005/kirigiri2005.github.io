@@ -1,65 +1,209 @@
 <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mikumo的咖啡日记 — 离线优先的咖啡豆管家</title>
+<meta name="keywords" content="咖啡日记,咖啡豆管理,冲煮记录,开源,Android,React Native">
+<meta name="description" content="mikumo的咖啡日记是一款离线优先的咖啡豆库存管理与冲煮记录 Android 应用。记录每一包豆子的来处与每一杯咖啡的味道。">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<html>
-  <head>
-    <link rel="shortcut icon" href="/123.ico" />
-    <link rel="bookmark" href="/123.ico" />
-    <meta charset="utf-8" />
-    <title>delphinidae9的网站</title>
-    <meta name="keywords" content="delphinidae9的网站" />
-    <meta name="description" content="delphinidae9的网站" />
-    <meta name="renderer" content="webkit" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="Cache-Control" content="no-store, must-revalidate" />
-    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
-    <meta http-equiv="expires" content="0" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?3bf6abd9080c1fd938ff2491b1a3e21f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  </head>
-  <body>
-    <h1>delphinidae9的网站</h1>
-    <br />
-    <p>你好</p>
-    <img alt="可爱的派蒙" src="img/paimeng.png" width="128px" height="128px" />
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <br /><br /><a href="blog" target="_blank"
-      >delphinidae9的博客（点击查看）</a
-    >
-    <br /><br /><a href="song" target="_blank">点歌（点击查看）</a>
-    <br /><br /><a href="guest" target="_blank">访客系统（点击查看）</a>
-    <br /><em>你可以通过访客系统给站长留言</em> <br /><br /><a
-      href="https://space.bilibili.com/354378381"
-      target="_blank"
-      >这是站长的B站主页（点击查看）</a
-    >
-    <br /><br /><br /><br /><a href="myself" target="_blank"
-      >站长备用（点击查看）</a
-    >
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <address>
-      <strong>联系站长</strong><br />
-      邮箱：dolphin@delphinidae9.club<br />
-    </address>
-    <br /><br /><br /><br /><br /><br /><br /><br />
-  </body>
+  :root {
+    --bg: #FDF8F0;
+    --card: #FFF;
+    --primary: #8B5E3C;
+    --primary-dark: #5C3D2E;
+    --accent: #D4A574;
+    --text: #3E2723;
+    --text-light: #8D6E63;
+    --border: #E0CFC0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  .hero {
+    text-align: center;
+    padding: 80px 0 64px;
+  }
+  .hero-icon { font-size: 64px; margin-bottom: 16px; }
+  .hero h1 { font-size: 36px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; letter-spacing: 2px; }
+  .hero p { font-size: 18px; color: var(--text-light); max-width: 500px; margin: 0 auto 32px; }
+  .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .hero-badges span {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #FFF;
+    box-shadow: 0 4px 16px rgba(139,94,60,0.3);
+  }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    margin-left: 12px;
+  }
+  .btn-outline:hover { background: var(--primary); color: #FFF; }
+
+  .section { padding: 64px 0; }
+  .section-title { text-align: center; font-size: 24px; font-weight: 700; color: var(--primary-dark); margin-bottom: 40px; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-icon { font-size: 36px; margin-bottom: 12px; }
+  .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--primary-dark); }
+  .feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+  .stats {
+    background: var(--primary-dark);
+    color: #FFF;
+    text-align: center;
+    padding: 48px 0;
+    border-radius: 16px;
+    margin: 0 24px;
+  }
+  .stats-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .stat-item h3 { font-size: 28px; font-weight: 800; }
+  .stat-item p { font-size: 14px; opacity: 0.8; margin-top: 4px; }
+
+  .tech-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .tech-tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: var(--text-light);
+  }
+
+  footer {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+  footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  .divider { width: 60px; height: 3px; background: var(--accent); margin: 0 auto 40px; border-radius: 2px; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 26px; }
+    .hero { padding: 48px 0 40px; }
+    .btn-outline { margin-left: 0; margin-top: 12px; }
+    .stats-grid { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero container">
+  <div class="hero-icon">☕</div>
+  <h1>mikumo的咖啡日记</h1>
+  <p>记录每一包豆子的来处，与每一杯咖啡的味道。</p>
+  <div class="hero-badges">
+    <span>🛡️ 离线优先</span>
+    <span>📱 数据自有</span>
+    <span>🔓 开源免费</span>
+  </div>
+  <a class="btn btn-primary" href="https://github.com/kirigiri2005/mikumo-coffee-diary/releases/latest">📥 下载 APK</a>
+  <a class="btn btn-outline" href="https://github.com/kirigiri2005/mikumo-coffee-diary">⭐ GitHub 仓库</a>
+</div>
+
+<div class="container">
+  <div class="divider"></div>
+  <div class="section-title">核心功能</div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🫘</div>
+      <h3>咖啡豆库存管理</h3>
+      <p>记录产国、产区、庄园、豆种、处理法、烘焙度与风味。克价自动计算，库存实时扣减。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>每日冲煮记录</h3>
+      <p>记录克数、方式、水温、研磨度、风味笔记。选豆时实时显示剩余克数，库存不足自动拦截。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>统计图表</h3>
+      <p>消耗占比饼图、30 天趋势折线图、冲煮方式柱状图。暖棕配色，自动深色模式。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💾</div>
+      <h3>数据备份</h3>
+      <p>JSON 导出备份 + 导入恢复，导入前自动备份防丢失。冲煮记录可导出 CSV。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>隐私优先</h3>
+      <p>SQLite 本地存储，无需注册、不上传服务器。你的数据永远在你手里。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌙</div>
+      <h3>赏味提醒</h3>
+      <p>设置最佳赏味天数，卡片自动提醒。低库存警告，豆子用完自动隐藏。</p>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item"><h3>35+</h3><p>功能数</p></div>
+    <div class="stat-item"><h3>4</h3><p>设计模块</p></div>
+    <div class="stat-item"><h3>77MB</h3><p>安装包体积</p></div>
+    <div class="stat-item"><h3>MIT</h3><p>开源协议</p></div>
+  </div>
+</div>
+
+<div class="section container" style="text-align:center">
+  <div class="divider"></div>
+  <div class="section-title">技术栈</div>
+  <div class="tech-tags">
+    <span class="tech-tag">React Native</span>
+    <span class="tech-tag">Expo SDK 52</span>
+    <span class="tech-tag">TypeScript</span>
+    <span class="tech-tag">SQLite</span>
+    <span class="tech-tag">Expo Router</span>
+    <span class="tech-tag">react-native-chart-kit</span>
+  </div>
+</div>
+
+<footer>
+  © 2026 <a href="https://github.com/kirigiri2005">kirigiri2005</a> ·
+  <a href="https://github.com/kirigiri2005/mikumo-coffee-diary">GitHub</a> ·
+  <a href="https://github.com/kirigiri2005/mikumo-coffee-diary/releases/latest">下载 APK</a> ·
+  MIT License
+</footer>
+
+</body>
 </html>
