@@ -1,121 +1,209 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>咖啡小站 — kirigiri2005</title>
-  <link rel="stylesheet" href="/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mikumo的咖啡日记 — 离线优先的咖啡豆管家</title>
+<meta name="keywords" content="咖啡日记,咖啡豆管理,冲煮记录,开源,Android,React Native">
+<meta name="description" content="mikumo的咖啡日记是一款离线优先的咖啡豆库存管理与冲煮记录 Android 应用。记录每一包豆子的来处与每一杯咖啡的味道。">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FDF8F0;
+    --card: #FFF;
+    --primary: #8B5E3C;
+    --primary-dark: #5C3D2E;
+    --accent: #D4A574;
+    --text: #3E2723;
+    --text-light: #8D6E63;
+    --border: #E0CFC0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  .hero {
+    text-align: center;
+    padding: 80px 0 64px;
+  }
+  .hero-icon { font-size: 64px; margin-bottom: 16px; }
+  .hero h1 { font-size: 36px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; letter-spacing: 2px; }
+  .hero p { font-size: 18px; color: var(--text-light); max-width: 500px; margin: 0 auto 32px; }
+  .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .hero-badges span {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #FFF;
+    box-shadow: 0 4px 16px rgba(139,94,60,0.3);
+  }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    margin-left: 12px;
+  }
+  .btn-outline:hover { background: var(--primary); color: #FFF; }
+
+  .section { padding: 64px 0; }
+  .section-title { text-align: center; font-size: 24px; font-weight: 700; color: var(--primary-dark); margin-bottom: 40px; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-icon { font-size: 36px; margin-bottom: 12px; }
+  .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--primary-dark); }
+  .feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+  .stats {
+    background: var(--primary-dark);
+    color: #FFF;
+    text-align: center;
+    padding: 48px 0;
+    border-radius: 16px;
+    margin: 0 24px;
+  }
+  .stats-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .stat-item h3 { font-size: 28px; font-weight: 800; }
+  .stat-item p { font-size: 14px; opacity: 0.8; margin-top: 4px; }
+
+  .tech-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .tech-tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: var(--text-light);
+  }
+
+  footer {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+  footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  .divider { width: 60px; height: 3px; background: var(--accent); margin: 0 auto 40px; border-radius: 2px; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 26px; }
+    .hero { padding: 48px 0 40px; }
+    .btn-outline { margin-left: 0; margin-top: 12px; }
+    .stats-grid { gap: 24px; }
+  }
+</style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">🏠 kirigiri2005</a>
-      <div class="nav-links">
-        <a href="/">主页</a>
-        <a href="/coffee/" class="active">☕ 咖啡小站</a>
-        <a href="https://github.com/kirigiri2005" target="_blank">GitHub</a>
-      </div>
+<div class="hero container">
+  <div class="hero-icon">☕</div>
+  <h1>mikumo的咖啡日记</h1>
+  <p>记录每一包豆子的来处，与每一杯咖啡的味道。</p>
+  <div class="hero-badges">
+    <span>🛡️ 离线优先</span>
+    <span>📱 数据自有</span>
+    <span>🔓 开源免费</span>
+  </div>
+  <a class="btn btn-primary" href="https://github.com/kirigiri2005/mikumo-coffee-diary/releases/latest">📥 下载 APK</a>
+  <a class="btn btn-outline" href="https://github.com/kirigiri2005/mikumo-coffee-diary">⭐ GitHub 仓库</a>
+</div>
+
+<div class="container">
+  <div class="divider"></div>
+  <div class="section-title">核心功能</div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🫘</div>
+      <h3>咖啡豆库存管理</h3>
+      <p>记录产国、产区、庄园、豆种、处理法、烘焙度与风味。克价自动计算，库存实时扣减。</p>
     </div>
-  </nav>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>每日冲煮记录</h3>
+      <p>记录克数、方式、水温、研磨度、风味笔记。选豆时实时显示剩余克数，库存不足自动拦截。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>统计图表</h3>
+      <p>消耗占比饼图、30 天趋势折线图、冲煮方式柱状图。暖棕配色，自动深色模式。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💾</div>
+      <h3>数据备份</h3>
+      <p>JSON 导出备份 + 导入恢复，导入前自动备份防丢失。冲煮记录可导出 CSV。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>隐私优先</h3>
+      <p>SQLite 本地存储，无需注册、不上传服务器。你的数据永远在你手里。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌙</div>
+      <h3>赏味提醒</h3>
+      <p>设置最佳赏味天数，卡片自动提醒。低库存警告，豆子用完自动隐藏。</p>
+    </div>
+  </div>
+</div>
 
-  <header class="coffee-hero">
-    <h1>☕ mikumo的咖啡小站</h1>
-    <p>记录每一杯咖啡的味道</p>
-  </header>
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item"><h3>35+</h3><p>功能数</p></div>
+    <div class="stat-item"><h3>4</h3><p>设计模块</p></div>
+    <div class="stat-item"><h3>77MB</h3><p>安装包体积</p></div>
+    <div class="stat-item"><h3>MIT</h3><p>开源协议</p></div>
+  </div>
+</div>
 
-  <main class="coffee-content">
-    <a href="/" class="back-link">← 返回主页</a>
+<div class="section container" style="text-align:center">
+  <div class="divider"></div>
+  <div class="section-title">技术栈</div>
+  <div class="tech-tags">
+    <span class="tech-tag">React Native</span>
+    <span class="tech-tag">Expo SDK 52</span>
+    <span class="tech-tag">TypeScript</span>
+    <span class="tech-tag">SQLite</span>
+    <span class="tech-tag">Expo Router</span>
+    <span class="tech-tag">react-native-chart-kit</span>
+  </div>
+</div>
 
-    <!-- 关于 -->
-    <section class="coffee-section">
-      <h2>关于这个小站</h2>
-      <p>
-        这里是我的咖啡生活记录空间。从入门手冲到探索意式，从第一包精品豆到建立起自己的冲煮体系。
-        每一杯咖啡都是一次实验，每一包豆子都有一段故事。
-      </p>
-    </section>
-
-    <!-- 应用 -->
-    <section class="coffee-section">
-      <h2>📱 mikumo的咖啡日记 App</h2>
-      <p>
-        一个完全运行在手机本地、无服务器的咖啡豆库存管理与冲煮记录 Android 应用。
-        离线优先，数据自有，记录每一包豆子的来处与每一杯咖啡的味道。
-      </p>
-
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3>📦 豆库管理</h3>
-          <p>记录咖啡豆的产地、烘焙度、处理法、购买日期等信息</p>
-        </div>
-        <div class="feature-card">
-          <h3>☕ 冲煮记录</h3>
-          <p>记录每次冲煮的参数：粉量、水温、时间、风味描述</p>
-        </div>
-        <div class="feature-card">
-          <h3>📊 数据统计</h3>
-          <p>消耗趋势、豆子评分分布、冲煮参数对比</p>
-        </div>
-        <div class="feature-card">
-          <h3>🔒 离线优先</h3>
-          <p>数据完全存储在本地 SQLite，无需网络，保护隐私</p>
-        </div>
-      </div>
-
-      <div class="coffee-dl" style="margin-top:24px;">
-        <a href="https://github.com/kirigiri2005/mikumo-coffee-diary" target="_blank" class="btn-dl">
-          📂 查看项目源码
-        </a>
-        <span class="version">React Native · Expo SDK 52 · SQLite · TypeScript</span>
-      </div>
-    </section>
-
-    <!-- 器具 -->
-    <section class="coffee-section">
-      <h2>🛠️ 我的咖啡器具</h2>
-      <ul>
-        <li>V60 滤杯 — 日常手冲首选</li>
-        <li>手冲壶 — 控制水流的关键</li>
-        <li>电子秤 — 精确到 0.1g</li>
-        <li>手摇磨豆机 — 现磨现冲</li>
-      </ul>
-    </section>
-
-    <!-- 豆单 -->
-    <section class="coffee-section">
-      <h2>🫘 近期豆单</h2>
-      <ul>
-        <li>埃塞俄比亚 耶加雪菲 水洗 — 柑橘 · 茉莉花 · 蜂蜜</li>
-        <li>哥伦比亚 蕙兰 水洗 — 焦糖 · 坚果 · 巧克力</li>
-        <li>云南 普洱 日晒 — 红酒 · 莓果 · 红糖</li>
-        <li>巴西 喜拉多 日晒 — 花生 · 奶油 · 可可</li>
-      </ul>
-    </section>
-
-    <!-- 冲煮 -->
-    <section class="coffee-section">
-      <h2>📐 常用冲煮参数</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3>V60 基础方案</h3>
-          <p>粉量 15g · 粉水比 1:15 · 水温 92°C · 三段注水 · 总时间 ~2:30</p>
-        </div>
-        <div class="feature-card">
-          <h3>冰手冲</h3>
-          <p>粉量 18g · 冰 100g · 热水 170g · 水温 94°C · 研磨稍细</p>
-        </div>
-        <div class="feature-card">
-          <h3>一刀流</h3>
-          <p>粉量 15g · 粉水比 1:16 · 水温 90°C · 闷蒸后一次性注完</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>© 2026 kirigiri2005 · <a href="https://github.com/kirigiri2005">GitHub</a> · 用 ❤️ 和 ☕ 制作</p>
-  </footer>
+<footer>
+  © 2026 <a href="https://github.com/kirigiri2005">kirigiri2005</a> ·
+  <a href="https://github.com/kirigiri2005/mikumo-coffee-diary">GitHub</a> ·
+  <a href="https://github.com/kirigiri2005/mikumo-coffee-diary/releases/latest">下载 APK</a> ·
+  MIT License
+</footer>
 
 </body>
 </html>
