@@ -1,209 +1,124 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mikumo的咖啡日记 — 离线优先的咖啡豆管家</title>
-<meta name="keywords" content="咖啡日记,咖啡豆管理,冲煮记录,开源,Android,React Native">
-<meta name="description" content="mikumo的咖啡日记是一款离线优先的咖啡豆库存管理与冲煮记录 Android 应用。记录每一包豆子的来处与每一杯咖啡的味道。">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #FDF8F0;
-    --card: #FFF;
-    --primary: #8B5E3C;
-    --primary-dark: #5C3D2E;
-    --accent: #D4A574;
-    --text: #3E2723;
-    --text-light: #8D6E63;
-    --border: #E0CFC0;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-  }
-
-  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-
-  .hero {
-    text-align: center;
-    padding: 80px 0 64px;
-  }
-  .hero-icon { font-size: 64px; margin-bottom: 16px; }
-  .hero h1 { font-size: 36px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; letter-spacing: 2px; }
-  .hero p { font-size: 18px; color: var(--text-light); max-width: 500px; margin: 0 auto 32px; }
-  .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-  .hero-badges span {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 13px;
-    color: var(--text-light);
-  }
-  .btn {
-    display: inline-block;
-    padding: 14px 40px;
-    border-radius: 28px;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-primary {
-    background: var(--primary);
-    color: #FFF;
-    box-shadow: 0 4px 16px rgba(139,94,60,0.3);
-  }
-  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-  .btn-outline {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    margin-left: 12px;
-  }
-  .btn-outline:hover { background: var(--primary); color: #FFF; }
-
-  .section { padding: 64px 0; }
-  .section-title { text-align: center; font-size: 24px; font-weight: 700; color: var(--primary-dark); margin-bottom: 40px; }
-  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-  .feature-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 24px;
-    text-align: center;
-    transition: transform 0.2s;
-  }
-  .feature-card:hover { transform: translateY(-2px); }
-  .feature-icon { font-size: 36px; margin-bottom: 12px; }
-  .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--primary-dark); }
-  .feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
-
-  .stats {
-    background: var(--primary-dark);
-    color: #FFF;
-    text-align: center;
-    padding: 48px 0;
-    border-radius: 16px;
-    margin: 0 24px;
-  }
-  .stats-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
-  .stat-item h3 { font-size: 28px; font-weight: 800; }
-  .stat-item p { font-size: 14px; opacity: 0.8; margin-top: 4px; }
-
-  .tech-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-  .tech-tag {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 14px;
-    color: var(--text-light);
-  }
-
-  footer {
-    text-align: center;
-    padding: 48px 24px;
-    color: var(--text-light);
-    font-size: 14px;
-  }
-  footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-  footer a:hover { text-decoration: underline; }
-
-  .divider { width: 60px; height: 3px; background: var(--accent); margin: 0 auto 40px; border-radius: 2px; }
-
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 26px; }
-    .hero { padding: 48px 0 40px; }
-    .btn-outline { margin-left: 0; margin-top: 12px; }
-    .stats-grid { gap: 24px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kirigiri2005 — 个人主页</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="hero container">
-  <div class="hero-icon">☕</div>
-  <h1>mikumo的咖啡日记</h1>
-  <p>记录每一包豆子的来处，与每一杯咖啡的味道。</p>
-  <div class="hero-badges">
-    <span>🛡️ 离线优先</span>
-    <span>📱 数据自有</span>
-    <span>🔓 开源免费</span>
-  </div>
-  <a class="btn btn-primary" href="https://github.com/kirigiri2005/mikumo-coffee-diary/releases/latest">📥 下载 APK</a>
-  <a class="btn btn-outline" href="https://github.com/kirigiri2005/mikumo-coffee-diary">⭐ GitHub 仓库</a>
-</div>
-
-<div class="container">
-  <div class="divider"></div>
-  <div class="section-title">核心功能</div>
-  <div class="features">
-    <div class="feature-card">
-      <div class="feature-icon">🫘</div>
-      <h3>咖啡豆库存管理</h3>
-      <p>记录产国、产区、庄园、豆种、处理法、烘焙度与风味。克价自动计算，库存实时扣减。</p>
+  <!-- 导航 -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">🏠 kirigiri2005</a>
+      <div class="nav-links">
+        <a href="/" class="active">主页</a>
+        <a href="/coffee/">☕ 咖啡小站</a>
+        <a href="https://github.com/kirigiri2005" target="_blank">GitHub</a>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📝</div>
-      <h3>每日冲煮记录</h3>
-      <p>记录克数、方式、水温、研磨度、风味笔记。选豆时实时显示剩余克数，库存不足自动拦截。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3>统计图表</h3>
-      <p>消耗占比饼图、30 天趋势折线图、冲煮方式柱状图。暖棕配色，自动深色模式。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💾</div>
-      <h3>数据备份</h3>
-      <p>JSON 导出备份 + 导入恢复，导入前自动备份防丢失。冲煮记录可导出 CSV。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔒</div>
-      <h3>隐私优先</h3>
-      <p>SQLite 本地存储，无需注册、不上传服务器。你的数据永远在你手里。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🌙</div>
-      <h3>赏味提醒</h3>
-      <p>设置最佳赏味天数，卡片自动提醒。低库存警告，豆子用完自动隐藏。</p>
-    </div>
-  </div>
-</div>
+  </nav>
 
-<div class="stats">
-  <div class="stats-grid">
-    <div class="stat-item"><h3>35+</h3><p>功能数</p></div>
-    <div class="stat-item"><h3>4</h3><p>设计模块</p></div>
-    <div class="stat-item"><h3>77MB</h3><p>安装包体积</p></div>
-    <div class="stat-item"><h3>MIT</h3><p>开源协议</p></div>
-  </div>
-</div>
+  <!-- 头部 -->
+  <header class="hero">
+    <div class="hero-content">
+      <img src="https://github.com/kirigiri2005.png" alt="avatar" class="avatar">
+      <h1>kirigiri2005</h1>
+      <p class="hero-bio">西南大学 · 动物科学技术学院 · 2023级本科</p>
+      <p class="hero-desc">
+        热爱编程的动科人 🐄☕<br>
+        关注动物营养、饲料科学，同时享受用代码解决实际问题的乐趣。
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/kirigiri2005" target="_blank" class="btn-outline">🔗 GitHub</a>
+        <a href="mailto:kirigiri2005@users.noreply.github.com" class="btn-outline">📧 Email</a>
+      </div>
+    </div>
+  </header>
 
-<div class="section container" style="text-align:center">
-  <div class="divider"></div>
-  <div class="section-title">技术栈</div>
-  <div class="tech-tags">
-    <span class="tech-tag">React Native</span>
-    <span class="tech-tag">Expo SDK 52</span>
-    <span class="tech-tag">TypeScript</span>
-    <span class="tech-tag">SQLite</span>
-    <span class="tech-tag">Expo Router</span>
-    <span class="tech-tag">react-native-chart-kit</span>
-  </div>
-</div>
+  <!-- 项目 -->
+  <main class="projects">
+    <h2>📦 开源项目</h2>
+    <div class="project-grid">
 
-<footer>
-  © 2026 <a href="https://github.com/kirigiri2005">kirigiri2005</a> ·
-  <a href="https://github.com/kirigiri2005/mikumo-coffee-diary">GitHub</a> ·
-  <a href="https://github.com/kirigiri2005/mikumo-coffee-diary/releases/latest">下载 APK</a> ·
-  MIT License
-</footer>
+      <!-- Markdown 查看器 -->
+      <a href="https://github.com/kirigiri2005/markdown-viewer" target="_blank" class="project-card">
+        <div class="project-card-header">
+          <span class="project-icon">📝</span>
+          <h3>Markdown 查看器</h3>
+        </div>
+        <p>轻量级桌面 Markdown 阅读器，支持多标签页浏览、拖放打开、会话记忆恢复。基于 Python + pywebview 构建。</p>
+        <div class="project-tags">
+          <span>Python</span><span>pywebview</span><span>Desktop</span>
+        </div>
+        <div class="project-card-footer">
+          <span>⭐ 查看项目 →</span>
+        </div>
+      </a>
 
+      <!-- 咖啡日记 -->
+      <a href="https://github.com/kirigiri2005/mikumo-coffee-diary" target="_blank" class="project-card">
+        <div class="project-card-header">
+          <span class="project-icon">☕</span>
+          <h3>mikumo的咖啡日记</h3>
+        </div>
+        <p>离线优先的咖啡豆库存管理与冲煮记录 Android 应用。记录每一包豆子的来处与每一杯咖啡的味道。</p>
+        <div class="project-tags">
+          <span>React Native</span><span>Expo</span><span>SQLite</span>
+        </div>
+        <div class="project-card-footer">
+          <span>⭐ 查看项目 →</span>
+        </div>
+      </a>
+
+      <!-- 咖啡小站 -->
+      <a href="/coffee/" class="project-card">
+        <div class="project-card-header">
+          <span class="project-icon">🛒</span>
+          <h3>咖啡小站</h3>
+        </div>
+        <p>我的咖啡生活空间 — 咖啡器具、冲煮配方、豆单记录。了解更多关于咖啡的一切。</p>
+        <div class="project-tags">
+          <span>Blog</span><span>Coffee</span><span>Life</span>
+        </div>
+        <div class="project-card-footer">
+          <span>☕ 进入小站 →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- 技能 / 工具 -->
+  <section class="skills">
+    <h2>🛠️ 技能 & 工具</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>编程语言</h3>
+        <div class="skill-tags">
+          <span>Python</span><span>R</span><span>JavaScript</span><span>TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>数据 & 科研</h3>
+        <div class="skill-tags">
+          <span>R 语言</span><span>Meta 分析</span><span>ggplot2</span><span>动物营养</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>工具 & 框架</h3>
+        <div class="skill-tags">
+          <span>React Native</span><span>Git</span><span>Zotero</span><span>CNKI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 kirigiri2005 · <a href="https://github.com/kirigiri2005">GitHub</a></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
