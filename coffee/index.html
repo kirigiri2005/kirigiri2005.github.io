@@ -116,22 +116,24 @@
 
   .divider { width: 60px; height: 3px; background: var(--accent); margin: 0 auto 40px; border-radius: 2px; }
 
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 26px; }
-    .hero { padding: 48px 0 40px; }
-    .btn-outline { margin-left: 0; margin-top: 12px; }
-    .stats-grid { gap: 24px; }
-  }
-</style>
   .back-home {
-    position: fixed; top: 20px; left: 20px; z-index: 100;
+    position: fixed; top: 16px; left: 16px; z-index: 100;
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 24px; padding: 8px 18px;
-    font-size: 14px; color: var(--primary); text-decoration: none;
+    border-radius: 20px; padding: 6px 14px;
+    font-size: 13px; color: var(--primary); text-decoration: none;
     font-weight: 600; transition: all 0.2s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: inline-flex; align-items: center; gap: 4px;
   }
   .back-home:hover { background: var(--primary); color: #FFF; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 26px; }
+    .hero { padding: 60px 0 40px; }
+    .btn-outline { margin-left: 0; margin-top: 12px; }
+    .stats-grid { gap: 24px; }
+    .back-home { top: 10px; left: 10px; padding: 5px 12px; font-size: 12px; border-radius: 16px; }
+  }
 </style>
 </head>
 <body>
